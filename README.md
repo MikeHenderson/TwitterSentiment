@@ -1,7 +1,10 @@
 # TwitterSentiment
 Masters project for twitter sentiment
 
-# Installation
+## Details
+Uses NaiveBayesClassifier for sentiment analysis from nltk library
+
+## Installation
 Runtime: Python 3.6\
 Packages: Twint
 
