@@ -85,13 +85,3 @@ class SentimentModel:
         self.classifier = NaiveBayesClassifier.train(train_data)
         print("Current accuracy to test data is: {}".format(classify.accuracy(self.classifier, test_data)))
         self.classifier.show_most_informative_features()
-
-
-def main():
-    analyzer = SentimentModel()
-    print(analyzer.negative_training_data[10])
-    print(analyzer.classify(analyzer.negative_training_data[10]))
-
-
-if __name__ == "__main__":
-    main()

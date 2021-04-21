@@ -5,10 +5,10 @@ class TweetScraper:
     def __init__(self):
         # Config options can be found at https://github.com/twintproject/twint/wiki/Configuration
         self.config = twint.Config()
-        self.config.Store_json = True
-        self.config.Lang = "en"
-        self.config.Output = "output"
-
+        self.config.Custom_csv = ["id", "user_id", "username", "tweet"]
+        self.config.Store_csv = True
+        self.config.Output = "output.csv"
+        self.config.Lang = 'en'
         return
 
     def initializeConfig(self, maxTweets, start, end):

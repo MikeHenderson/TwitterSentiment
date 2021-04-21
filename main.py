@@ -1,5 +1,7 @@
+from SentimentModel import SentimentModel
 from TweetScraper import TweetScraper
 import argparse
+import pandas as pd
 
 
 def initArgs():
@@ -26,3 +28,16 @@ if __name__ == '__main__':
         scraper.searchByUsername(args.username, args.limit, args.start, args.end)
     elif args.keyword:
         scraper.searchByKeyword(args.keyword, args.limit, args.start, args.end)
+
+    df = pd.read_csv('output.csv')
+    analyzer = SentimentModel()
+
+    result = []
+
+    for index, row in df.iterrows():
+        isPositive = analyzer.classify(row['tweet'])
+        result.append((row['tweet'], row['date'], isPositive))
+
+    resultDf = pd.DataFrame(result, columns=['Tweet', 'Date', 'IsPositive'])
+
+    print(resultDf)
