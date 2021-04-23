@@ -28,6 +28,7 @@ class SentimentModel:
         self.stopwords = stopwords.words('english')
 
         # Run self training
+        print("Training...")
         self._train()
 
     @staticmethod
