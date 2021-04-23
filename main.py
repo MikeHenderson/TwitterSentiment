@@ -23,7 +23,7 @@ class Binning(Enum):
     MONTH = 1
 
 
-def presentation(keywords: List[str],
+def presentation(*keywords: str,
                  binning: Binning = Binning.WEEK, limit: int = 10000, start=None, end=None):
 
     scraper = TweetScraper()
@@ -62,6 +62,8 @@ def presentation(keywords: List[str],
         plt.bar(agg_df.index, agg_df['pos'], width=width, color='b')  # Width measured in days
         plt.bar(agg_df.index, agg_df['neg'], width=width, color='r')
         plt.title("Sentiment of {}".format(keyword))
+        plt.xlabel('Date')
+        plt.ylabel('Sentiment')
         fig.autofmt_xdate()
         plt.savefig("{}.png".format(keyword), bbox_inches='tight')
         plt.show()
@@ -114,4 +116,4 @@ def cli():
 
 if __name__ == '__main__':
     # cli()
-    presentation(["discord", "imac", "tesla"])
+    presentation("discord", "imac", "tesla")
